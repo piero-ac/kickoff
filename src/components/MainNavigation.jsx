@@ -28,12 +28,12 @@ export default function MainNavigation() {
 								<FontAwesomeIcon icon={faFutbol} /> Football
 							</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to="/stats">
+						<LinkContainer to="/stats" disabled>
 							<Nav.Link className="fs-5">
 								<FontAwesomeIcon icon={faChartSimple} /> Statistics
 							</Nav.Link>
 						</LinkContainer>
-						<LinkContainer to="/news">
+						<LinkContainer to="/news" disabled>
 							<Nav.Link className="fs-5">
 								<FontAwesomeIcon icon={faNewspaper} /> News
 							</Nav.Link>
