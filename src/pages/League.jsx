@@ -11,7 +11,7 @@ export default function League() {
 		<Container className="my-5">
 			<Row className="justify-content-evenly">
 				<LeagueNavigation />
-				<LeagueInfo />
+				<LeagueInfo leagueId={params.leagueId} />
 			</Row>
 		</Container>
 	);
