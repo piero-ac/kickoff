@@ -10,7 +10,7 @@ export default function League() {
 	return (
 		<Container className="my-5">
 			<Row className="justify-content-evenly">
-				<LeagueNavigation selected={params.leagueId} />
+				<LeagueNavigation />
 				<LeagueInfo />
 			</Row>
 		</Container>
