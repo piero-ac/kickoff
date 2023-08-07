@@ -16,7 +16,7 @@ export default function Home() {
 			<Row className="mt-3 mx-1 justify-content-evenly">
 				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
-						to="/league/39"
+						to="/league/39/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						Premier League
@@ -24,7 +24,7 @@ export default function Home() {
 				</Col>
 				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
-						to="/league/135"
+						to="/league/135/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						Serie A
@@ -32,7 +32,7 @@ export default function Home() {
 				</Col>
 				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
-						to="/league/140"
+						to="/league/140/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						La Liga
@@ -40,7 +40,7 @@ export default function Home() {
 				</Col>
 				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
-						to="/league/78"
+						to="/league/78/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						Bundesliga
@@ -48,7 +48,7 @@ export default function Home() {
 				</Col>
 				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
-						to="/league/61"
+						to="/league/61/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						Ligue 1
@@ -56,7 +56,7 @@ export default function Home() {
 				</Col>
 				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
-						to="/league/866"
+						to="/league/866/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						MLS
