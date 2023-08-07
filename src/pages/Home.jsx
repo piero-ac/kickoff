@@ -1,57 +1,66 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Accordion from "react-bootstrap/Accordion";
 import { Link } from "react-router-dom";
-import Stack from "react-bootstrap/Stack";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faFutbol } from "@fortawesome/free-solid-svg-icons";
 
 export default function Home() {
 	return (
-		<Container className="mt-2">
-			<Row>
-				<Col s={12} md={3}>
-					<Accordion defaultActiveKey="0">
-						<Accordion.Item eventKey="0">
-							<Accordion.Header>Leagues</Accordion.Header>
-							<Accordion.Body>
-								<Stack gap={2} className="">
-									<Link
-										to="/league/epl"
-										className="link-underline link-underline-opacity-0"
-									>
-										Premier League
-									</Link>
-									<Link
-										to="/league/laliga"
-										className="link-underline link-underline-opacity-0"
-									>
-										La Liga
-									</Link>
-									<Link
-										to="/league/seriea"
-										className="link-underline link-underline-opacity-0"
-									>
-										Serie A
-									</Link>
-									<Link
-										to="/league/bundesliga"
-										className="link-underline link-underline-opacity-0"
-									>
-										Bundesliga
-									</Link>
-									<Link
-										to="/league/ligue1"
-										className="link-underline link-underline-opacity-0"
-									>
-										Ligue 1
-									</Link>
-								</Stack>
-							</Accordion.Body>
-						</Accordion.Item>
-					</Accordion>
+		<Container className="my-5">
+			<h1 className="display-1 text-center text-success fw-bold">
+				Kick
+				<FontAwesomeIcon icon={faFutbol} />
+				ff
+			</h1>
+			<Row className="mt-3 mx-1 justify-content-evenly">
+				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+					<Link
+						to="/league/39"
+						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
+					>
+						Premier League
+					</Link>
 				</Col>
-				<Col s={12} md={{ span: 8, offset: 1 }}>
-					Home Page
+				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+					<Link
+						to="/league/135"
+						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
+					>
+						Serie A
+					</Link>
+				</Col>
+				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+					<Link
+						to="/league/140"
+						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
+					>
+						La Liga
+					</Link>
+				</Col>
+				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+					<Link
+						to="/league/78"
+						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
+					>
+						Bundesliga
+					</Link>
+				</Col>
+				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+					<Link
+						to="/league/61"
+						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
+					>
+						Ligue 1
+					</Link>
+				</Col>
+				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+					<Link
+						to="/league/866"
+						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
+					>
+						MLS
+					</Link>
 				</Col>
 			</Row>
 		</Container>
