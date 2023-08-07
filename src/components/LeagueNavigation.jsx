@@ -8,7 +8,7 @@ export default function LeagueNavigation() {
 			<ListGroup variant="flush">
 				<ListGroup.Item className="bg-dark">
 					<Link
-						to="/league/39"
+						to="/league/39/overview"
 						className="link-secondary link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						Premier League
@@ -16,7 +16,7 @@ export default function LeagueNavigation() {
 				</ListGroup.Item>
 				<ListGroup.Item className="bg-dark">
 					<Link
-						to="/league/140"
+						to="/league/140/overview"
 						className="link-secondary link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						La Liga
@@ -24,7 +24,7 @@ export default function LeagueNavigation() {
 				</ListGroup.Item>
 				<ListGroup.Item className="bg-dark">
 					<Link
-						to="/league/135"
+						to="/league/135/overview"
 						className="link-secondary  link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						Serie A
@@ -32,7 +32,7 @@ export default function LeagueNavigation() {
 				</ListGroup.Item>
 				<ListGroup.Item className="bg-dark">
 					<Link
-						to="/league/78"
+						to="/league/78/overview"
 						className="link-secondary link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						Bundesliga
@@ -40,7 +40,7 @@ export default function LeagueNavigation() {
 				</ListGroup.Item>
 				<ListGroup.Item className="bg-dark">
 					<Link
-						to="/league/61"
+						to="/league/61/overview"
 						className="link-secondary link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						Ligue 1
@@ -48,7 +48,7 @@ export default function LeagueNavigation() {
 				</ListGroup.Item>
 				<ListGroup.Item className="bg-dark">
 					<Link
-						to="/league/866"
+						to="/league/866/overview"
 						className="link-secondary link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						MLS
