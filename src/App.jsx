@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import RootLayout from "./pages/RootLayout";
 import League from "./pages/League";
 import "bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
 
 const router = createBrowserRouter([
 	{
