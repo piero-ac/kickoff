@@ -54,14 +54,14 @@ export default function Home() {
 						Ligue 1
 					</Link>
 				</Col>
-				<Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
+				{/* <Col md={3} className="bg-success text-center mx-1 rounded-1 mb-3">
 					<Link
 						to="/league/866/overview"
 						className="text-light link-underline link-underline-opacity-0 fs-2 fw-bold"
 					>
 						MLS
 					</Link>
-				</Col>
+				</Col> */}
 			</Row>
 		</Container>
 	);

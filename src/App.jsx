@@ -8,9 +8,11 @@ import RootLayout from "./pages/RootLayout";
 import LeagueLayout from "./pages/LeagueLayout";
 import LeagueOverview from "./pages/LeagueOverview";
 import LeagueFixtures from "./pages/LeagueFixtures";
-import LeagueTable from "./pages/LeagueTable";
+import LeagueTable, { loader as leagueTableLoader } from "./pages/LeagueTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
+
+const availableLeagues = ["61", "39", "140", "78", "135"];
 
 const router = createBrowserRouter([
 	{
@@ -23,10 +25,21 @@ const router = createBrowserRouter([
 				path: "league/:leagueId",
 				element: <LeagueLayout />,
 				children: [
-					{ index: true, element: <LeagueOverview /> },
+					{
+						index: true,
+						loader: ({ params }) => {
+							if (!availableLeagues.includes(params.leagueId))
+								return redirect("/");
+							return redirect(`/league/${params.leagueId}/overview`);
+						},
+					},
 					{ path: "overview", element: <LeagueOverview /> },
 					{ path: "fixtures", element: <LeagueFixtures /> },
-					{ path: "table", element: <LeagueTable /> },
+					{
+						path: "table",
+						element: <LeagueTable />,
+						loader: leagueTableLoader,
+					},
 				],
 			},
 		],
