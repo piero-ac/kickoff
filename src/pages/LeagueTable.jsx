@@ -8,7 +8,6 @@ export default function LeagueTable() {
 	const [, , leagueId] = location.pathname.split("/");
 	const data = useLoaderData();
 	const table = data.data;
-	// console.log(table);
 
 	const getRankClassName = (rank, leagueId) => {
 		if (rank === 1) return "text-success";
