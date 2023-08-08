@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
-// import Row from "react-bootstrap/Row";
 import Table from "react-bootstrap/Table";
-import { useLoaderData, useLocation } from "react-router-dom";
+import { useLoaderData, useLocation, json } from "react-router-dom";
 
 export default function LeagueTable() {
 	const location = useLocation();
@@ -101,11 +100,8 @@ export async function loader({ params }) {
 	);
 
 	if (!response.ok) {
-		//....
-		console.log("could not e fetched");
+		throw json({ message: "Could not fetch table." }, { status: 500 });
 	} else {
 		return response;
 	}
 }
-
-// For Premier League (39)
