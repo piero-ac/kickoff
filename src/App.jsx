@@ -8,7 +8,7 @@ import RootLayout from "./pages/RootLayout";
 import LeagueLayout from "./pages/LeagueLayout";
 import LeagueOverview from "./pages/LeagueOverview";
 import LeagueFixtures from "./pages/LeagueFixtures";
-import LeagueTable from "./pages/LeagueTable";
+import LeagueTable, { loader as leagueTableLoader } from "./pages/LeagueTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
@@ -23,10 +23,18 @@ const router = createBrowserRouter([
 				path: "league/:leagueId",
 				element: <LeagueLayout />,
 				children: [
-					{ index: true, element: <LeagueOverview /> },
+					{
+						index: true,
+						loader: ({ params }) =>
+							redirect(`/league/${params.leagueId}/overview`),
+					},
 					{ path: "overview", element: <LeagueOverview /> },
 					{ path: "fixtures", element: <LeagueFixtures /> },
-					{ path: "table", element: <LeagueTable /> },
+					{
+						path: "table",
+						element: <LeagueTable />,
+						loader: leagueTableLoader,
+					},
 				],
 			},
 		],
