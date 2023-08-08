@@ -12,6 +12,8 @@ import LeagueTable, { loader as leagueTableLoader } from "./pages/LeagueTable";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
 
+const availableLeagues = ["61", "39", "140", "78", "135"];
+
 const router = createBrowserRouter([
 	{
 		path: "/",
@@ -25,8 +27,11 @@ const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						loader: ({ params }) =>
-							redirect(`/league/${params.leagueId}/overview`),
+						loader: ({ params }) => {
+							if (!availableLeagues.includes(params.leagueId))
+								return redirect("/");
+							return redirect(`/league/${params.leagueId}/overview`);
+						},
 					},
 					{ path: "overview", element: <LeagueOverview /> },
 					{ path: "fixtures", element: <LeagueFixtures /> },
