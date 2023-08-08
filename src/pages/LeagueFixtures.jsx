@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import Spinner from "react-bootstrap/Spinner";
+import LoadingSpinner from "../UI/Spinner";
 import { json, useLoaderData, defer, Await } from "react-router-dom";
 import Fixtures from "../components/Fixtures";
 import { errorLoader } from "../util/errorLoader";
@@ -7,16 +7,8 @@ import { errorLoader } from "../util/errorLoader";
 export default function LeagueFixtures() {
 	const { fixtures } = useLoaderData();
 
-	const loadingContent = (
-		<div className="text-center my-3">
-			<Spinner animation="border" role="status" variant="success">
-				<span className="visually-hidden">Loading...</span>
-			</Spinner>
-		</div>
-	);
-
 	return (
-		<Suspense fallback={loadingContent}>
+		<Suspense fallback={<LoadingSpinner />}>
 			<Await resolve={fixtures}>
 				{(loadedMatches) => <Fixtures fixtures={loadedMatches} />}
 			</Await>
