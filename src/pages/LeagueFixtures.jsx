@@ -38,7 +38,7 @@ async function loadFixtures(leagueId) {
 	}
 }
 
-export async function loader({ params }) {
+export function loader({ params }) {
 	return defer({
 		verifyId: errorLoader(params.leagueId),
 		fixtures: loadFixtures(params.leagueId),
