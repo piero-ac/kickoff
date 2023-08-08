@@ -40,7 +40,7 @@ async function loadFixtures(leagueId) {
 
 export async function loader({ params }) {
 	return defer({
-		verifyId: await errorLoader(params.leagueId),
+		verifyId: errorLoader(params.leagueId),
 		fixtures: loadFixtures(params.leagueId),
 	});
 }
