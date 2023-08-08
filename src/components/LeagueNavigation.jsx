@@ -46,14 +46,14 @@ export default function LeagueNavigation() {
 						Ligue 1
 					</Link>
 				</ListGroup.Item>
-				<ListGroup.Item className="bg-dark">
+				{/* <ListGroup.Item className="bg-dark">
 					<Link
 						to="/league/866/overview"
 						className="link-secondary link-underline link-underline-opacity-0 fs-5 text-success"
 					>
 						MLS
 					</Link>
-				</ListGroup.Item>
+				</ListGroup.Item> */}
 			</ListGroup>
 		</Col>
 	);
