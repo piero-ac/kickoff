@@ -6,7 +6,9 @@ import {
 import Home from "./pages/Home";
 import RootLayout from "./pages/RootLayout";
 import LeagueLayout from "./pages/LeagueLayout";
-import LeagueOverview from "./pages/LeagueOverview";
+import LeagueOverview, {
+	loader as leagueOverviewLoader,
+} from "./pages/LeagueOverview";
 import LeagueFixtures, {
 	loader as leagueFixturesLoader,
 } from "./pages/LeagueFixtures";
@@ -32,7 +34,11 @@ const router = createBrowserRouter([
 						index: true,
 						loader: ({ params }) => errorLoader(params.leagueId),
 					},
-					{ path: "overview", element: <LeagueOverview /> },
+					{
+						path: "overview",
+						element: <LeagueOverview />,
+						loader: leagueOverviewLoader,
+					},
 					{
 						path: "fixtures",
 						element: <LeagueFixtures />,
