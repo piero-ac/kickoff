@@ -6,18 +6,23 @@ import {
 import Home from "./pages/Home";
 import RootLayout from "./pages/RootLayout";
 import LeagueLayout from "./pages/LeagueLayout";
-import LeagueOverview from "./pages/LeagueOverview";
-import LeagueFixtures from "./pages/LeagueFixtures";
+import LeagueOverview, {
+	loader as leagueOverviewLoader,
+} from "./pages/LeagueOverview";
+import LeagueFixtures, {
+	loader as leagueFixturesLoader,
+} from "./pages/LeagueFixtures";
 import LeagueTable, { loader as leagueTableLoader } from "./pages/LeagueTable";
+import ErrorPage from "./pages/Error";
+import { errorLoader } from "./util/errorLoader";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-
-const availableLeagues = ["61", "39", "140", "78", "135"];
 
 const router = createBrowserRouter([
 	{
 		path: "/",
 		element: <RootLayout />,
+		errorElement: <ErrorPage />,
 		children: [
 			{ index: true, element: <Home /> },
 			{ path: "league", loader: () => redirect("/") },
@@ -27,14 +32,18 @@ const router = createBrowserRouter([
 				children: [
 					{
 						index: true,
-						loader: ({ params }) => {
-							if (!availableLeagues.includes(params.leagueId))
-								return redirect("/");
-							return redirect(`/league/${params.leagueId}/overview`);
-						},
+						loader: ({ params }) => errorLoader(params.leagueId),
 					},
-					{ path: "overview", element: <LeagueOverview /> },
-					{ path: "fixtures", element: <LeagueFixtures /> },
+					{
+						path: "overview",
+						element: <LeagueOverview />,
+						loader: leagueOverviewLoader,
+					},
+					{
+						path: "fixtures",
+						element: <LeagueFixtures />,
+						loader: leagueFixturesLoader,
+					},
 					{
 						path: "table",
 						element: <LeagueTable />,
