@@ -17,16 +17,39 @@ export default function LeagueFixtures() {
 }
 
 async function loadFixtures(leagueId) {
-	const endpoint = `/soccer/matches/${leagueId}/2023`;
-	const response = await fetch(
-		"https://soccer-app-backend.onrender.com" + endpoint
+	// Check if data is available in localStorage
+	const storedFixturesData = localStorage.getItem(`fixtures_${leagueId}`);
+	const storedFixturesDataExpiration = localStorage.getItem(
+		`fixtures_${leagueId}_expiration`
 	);
+	const currentTime = new Date().getTime();
+
+	if (
+		storedFixturesData &&
+		storedFixturesDataExpiration &&
+		currentTime >= storedFixturesDataExpiration
+	) {
+		const { matches } = JSON.parse(storedFixturesData);
+		return { matches };
+	}
+
+	// Otherwise, fetch from the backend
+	const endpoint = `/soccer/matches/${leagueId}/2023`;
+	const response = await fetch("http://localhost:3000" + endpoint);
 
 	if (!response.ok) {
-		throw json({ message: "Could not fetch fixtures." }, { status: 500 });
+		throw json(
+			{ message: "Could not fetch today's fixtures" },
+			{ status: 500 }
+		);
 	} else {
 		const resData = await response.json();
-		return resData.data;
+		const { data, expiration } = resData;
+
+		// Store fetched data and its expiration
+		localStorage.setItem(`fixtures_${leagueId}`, JSON.stringify(data));
+		localStorage.setItem(`fixtures_${leagueId}_expiration`, expiration);
+		return { matches: data.matches };
 	}
 }
 
