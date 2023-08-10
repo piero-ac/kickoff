@@ -20,11 +20,7 @@ export default function LeagueOverview() {
 			<Suspense fallback={<LoadingSpinner />}>
 				<Await resolve={todaysFixtures}>
 					{(loadedFixtures) => (
-						<Fixtures
-							// have to wrap in an object because Fixtures component expects an object with a matches property
-							fixtures={{ matches: loadedFixtures }}
-							message={"No fixtures today"}
-						/>
+						<Fixtures fixtures={loadedFixtures} message={"No fixtures today"} />
 					)}
 				</Await>
 			</Suspense>
@@ -48,9 +44,7 @@ export default function LeagueOverview() {
 // Copied from LeagueTable
 async function loadStandings(leagueId) {
 	const endpoint = `/soccer/table/${leagueId}/2023`;
-	const response = await fetch(
-		"https://soccer-app-backend.onrender.com" + endpoint
-	);
+	const response = await fetch("http://localhost:3000" + endpoint);
 
 	if (!response.ok) {
 		throw json({ message: "Could not fetch table." }, { status: 500 });
@@ -61,25 +55,17 @@ async function loadStandings(leagueId) {
 }
 
 async function loadDayFixtures(leagueId) {
-	const url = `https://api-football-v1.p.rapidapi.com/v3/fixtures?league=${leagueId}&season=2023&date=${getDate()}`;
-	const options = {
-		method: "GET",
-		headers: {
-			"X-RapidAPI-Key": import.meta.env.VITE_RAPID_API_KEY,
-			"X-RapidAPI-Host": "api-football-v1.p.rapidapi.com",
-		},
-	};
-
-	const response = await fetch(url, options);
+	const endpoint = `/soccer/matches/${leagueId}/2023/${getDate()}`;
+	const response = await fetch("http://localhost:3000" + endpoint);
 
 	if (!response.ok) {
 		throw json(
-			{ message: "Could not fetch today's fixtures." },
+			{ message: "Could not fetch today's fixtures" },
 			{ status: 500 }
 		);
 	} else {
 		const resData = await response.json();
-		return resData.response;
+		return resData.data;
 	}
 }
 
