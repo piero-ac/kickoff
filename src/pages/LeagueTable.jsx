@@ -27,16 +27,36 @@ export default function LeagueTable() {
 }
 
 async function loadStandings(leagueId) {
-	const endpoint = `/soccer/table/${leagueId}/2023`;
-	const response = await fetch(
-		"https://soccer-app-backend.onrender.com" + endpoint
+	// Check if data is available in localStorage
+	const storedStandingsData = localStorage.getItem(`standings_${leagueId}`);
+	const storedStandingsDataExpiration = localStorage.getItem(
+		`standings_${leagueId}_expiration`
 	);
+	const currentTime = new Date().getTime();
+
+	if (
+		storedStandingsData &&
+		storedStandingsDataExpiration &&
+		currentTime >= storedStandingsDataExpiration
+	) {
+		return JSON.parse(storedStandingsData);
+	}
+
+	// Otherwise, fetch from the backend
+	const endpoint = `/soccer/table/${leagueId}/2023`;
+	const response = await fetch("http://localhost:3000" + endpoint);
 
 	if (!response.ok) {
 		throw json({ message: "Could not fetch table." }, { status: 500 });
 	} else {
 		const resData = await response.json();
-		return resData.data;
+		const { data, expiration } = resData;
+
+		// Store fetched data and its expiration
+		localStorage.setItem(`standings_${leagueId}`, JSON.stringify(data));
+		localStorage.setItem(`standings_${leagueId}_expiration`, expiration);
+
+		return data;
 	}
 }
 
