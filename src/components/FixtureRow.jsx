@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faChevronRight } from "@fortawesome/free-solid-svg-icons";
+import { formatDateToDDMMM } from "../util/getDate";
 
 export default function FixtureRow({ match }) {
 	return (
@@ -11,8 +12,8 @@ export default function FixtureRow({ match }) {
 			className="bg-success rounded-1 my-2 mx-auto py-1"
 		>
 			<Col xs={3} lg={2}>
-				<div>{formatDateToDDMMM(new Date(match.date))}</div>
-				<div>TBD</div>
+				<div>{formatDateToDDMMM(match.date)}</div>
+				<div>{match.time}</div>
 			</Col>
 			<Col className="d-none d-lg-block">
 				<Row>
@@ -71,26 +72,4 @@ export default function FixtureRow({ match }) {
 			</Col>
 		</Row>
 	);
-}
-
-function formatDateToDDMMM(date) {
-	const months = [
-		"Jan",
-		"Feb",
-		"Mar",
-		"Apr",
-		"May",
-		"Jun",
-		"Jul",
-		"Aug",
-		"Sep",
-		"Oct",
-		"Nov",
-		"Dec",
-	];
-
-	const day = date.getDate();
-	const month = months[date.getMonth()];
-
-	return `${day} ${month}`;
 }
